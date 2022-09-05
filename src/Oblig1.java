@@ -51,6 +51,9 @@ public class Oblig1 {
 
     public static int antallUlikeSortert(int[] a) {
         int teller = 0;
+        if (!erSortert(a)){
+            throw new IllegalStateException("tabellen er ikke sortert!");
+        }
         for (int i = 0; i < a.length-1; i++) {
             //sammenligner indeks[0] med indeksen etter for å finne ut om tallet gjentas eller ikke/*
             if(a[i]!=a[i+1]){
@@ -61,8 +64,12 @@ public class Oblig1 {
         return teller;
     }
 
-    public static void main(String[] args) {
-        int array[] = {3, 3, 4, 5, 5, 6, 7, 7, 7, 8};
-        System.out.println(antallUlikeSortert(array));
+   public static boolean erSortert(int[]a){
+        for (int i = 0; i <a.length-1 ; i++) {
+            if(a[i]>a[i+1]){
+                return false;
+            }
+        }
+        return true;
     }
 }
