@@ -74,7 +74,7 @@ public class Oblig1 {
     }
 
     public static int antallUlikeUsortert(int[] a) {
-        if(a.length==0){
+        if (a.length == 0) {
             return 0;
         }
         int teller = 0;
@@ -98,7 +98,22 @@ public class Oblig1 {
         return teller;
     }
 
+    public static void delSortering(int[] a) {
+        int n = a.length / 2;
+        for (int i = 0; i < n; i++) {
+            for (int j = a.length - 1; j > n; j--) {
+                if (a[i] >= 0
+                        && a[j] >= 0
+                        && a[i] % 2 != 0
+                        && a[j] % 2 == 0) {
+                    int tall = a[i];
+                    a[i] = a[j];
+                    a[j] = tall;
+                }
+            }
+        }
 
     }
+}
 
 
