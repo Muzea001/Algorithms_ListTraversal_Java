@@ -74,7 +74,9 @@ public class Oblig1 {
     }
 
     public static int antallUlikeUsortert(int[] a) {
-
+        if(a.length==0){
+            return 0;
+        }
         int teller = 0;
         for (int i = 0; i < a.length; i++) {
             int tall = a[i];
@@ -97,11 +99,6 @@ public class Oblig1 {
     }
 
 
-
-        public static void main (String[]args){
-            int array[] = {1,2,3,3,2,1,5,6,1,7,8};
-            System.out.println(antallUlikeUsortert(array));
-        }
     }
 
 
