@@ -152,9 +152,23 @@ public class Oblig1 {
         }
     }
 
+    public static void rotasjon2(char[]a,int k){
+        for (int i = 0; i <k ; i++) {
+        char siste;
+            siste = a[a.length - 1];
+            for (int j = a.length-1; j > 0; j++) {
+                a[j] = a[j - 1];
+            }
+            a[k - 1] = siste;
+        }
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
     public static void main(String[] args) {
         char array[] = {'a','b','c','d','e','f'};
-        rotasjon(array);
+        rotasjon2(array,3);
     }
 }
 
