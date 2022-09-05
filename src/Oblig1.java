@@ -137,9 +137,24 @@ public class Oblig1 {
         }
     }
 
+    public static void rotasjon (char[]a){
+        for (int i = 0; i <1 ; i++) {
+            char siste;
+            siste = a[a.length-1];
+            for (int j = a.length-1; j >0; j--) {
+                a[j]=a[j-1];
+            }
+            a[0]=siste;
+
+        }
+        for (int i = 0; i <a.length ; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
     public static void main(String[] args) {
-        int array[]={56,5,4,8,2,1,3,1,5,2,1,5,4,3,2,6,4,8,1,23,1};
-        delSortering(array);
+        char array[] = {'a','b','c','d','e','f'};
+        rotasjon(array);
     }
 }
 
