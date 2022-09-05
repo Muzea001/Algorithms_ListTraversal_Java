@@ -17,3 +17,7 @@ Laget en metode som sammenligner tallet som ligger i indeks[0] med tallet som li
 
 Oppgave 3)
 Laget en metode som finner antall elementer som ikke er repetert i et array. Gjorde dette ved bruk av to hjelpevariabler. Jeg hentet første indeks fra arrayet og brukte et nested array for å løpe gjennom å sjekke hvor mange ganger den finnes. Hvis den finnes bare en gang økte jeg telleren med en.
+
+Oppgave 4)
+
+I denne oppgaven startet vi med å sortere arrayet slik at alle hele tall ligger til venstre og alle oddetall til høyere. Vi gjorde dette gjennom å halvere arrayet, loope gjennom  venstre og høyere siden av arrayet med en iterator. Vi stopper dersom vi finner et tall til venstre som ikke er helt, eller et tall til høere som ikke er oddetall. Da swapper vi tallane med hverandre. Etter at denne sorteringen er ferdig så sorterer vi venstre siden i økende rekkefølge og høyere siden i minkende rekkefølge. 
