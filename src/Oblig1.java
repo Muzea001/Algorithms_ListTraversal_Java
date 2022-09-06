@@ -73,6 +73,8 @@ public class Oblig1 {
         return true;
     }
 
+    // Oppgave 3
+
     public static int antallUlikeUsortert(int[] a) {
         if (a.length == 0) {
             return 0;
@@ -97,6 +99,10 @@ public class Oblig1 {
         }
         return teller;
     }
+
+
+    //Oppgave 4
+
 
     public static void delSortering(int[] a) {
         int n = a.length / 2;
@@ -137,6 +143,9 @@ public class Oblig1 {
         }
     }
 
+    //Oppgave 5
+
+
     public static void rotasjon (char[]a){
         for (int i = 0; i <1 ; i++) {
             char siste;
@@ -151,6 +160,8 @@ public class Oblig1 {
             System.out.println(a[i]);
         }
     }
+
+    //Oppgave 6
 
     public static void rotasjon2(char[]a,int k){
         if (k > 0) {
