@@ -187,9 +187,30 @@ public class Oblig1 {
         }
     }
 
+    //Oppgave 7
+
+    public static void flett(String a, String b){
+        int lengdeA = a.length();
+        int lengdeB = b.length();
+        if(lengdeA==lengdeB){
+
+        char[] aliste = a.toCharArray();
+        char[] bliste = b.toCharArray();
+
+        for (int i = 0; i < aliste.length; i++) {
+            System.out.println(aliste[i]);
+            System.out.println(bliste[i]);
+        }
+
+        }
+
+        }
+
+
+
+
     public static void main(String[] args) {
-        int [] array = {1,2,2,3,3,3,4,4,4,5,6,6};
-        System.out.println(antallUlikeUsortert(array));
+        flett("abc","abc");
     }
 }
 
