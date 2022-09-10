@@ -76,28 +76,23 @@ public class Oblig1 {
     // Oppgave 3
 
     public static int antallUlikeUsortert(int[] a) {
-        if (a.length == 0) {
+        int antall=0;
+        if (a.length==0) {
             return 0;
         }
-        int teller = 0;
-        for (int i = 0; i < a.length; i++) {
-            int tall = a[i];
-            int antall = 0;
-            // bruker to hjelpevariabler, den ene er for å telle antall ganger et element finnes i arrayet, dersom elementet finnes bare en gang i arrayet øker telleren med en.
-            for (int j = 0; j < a.length; j++) {
-                if (a[j] == tall) {
+        // looper to ganger gjennom arrayet, tar indeks 0 og løper gjennom listen for å finne hvor mange duplikater den har osv.
+        for (int i = 0; i < a.length; i++ ) {
+            for (int j = i+1; j < a.length; j++) {
+                //bruker et hjelpevariabel for å lagre antall ganger et duplikat eksisterer.
+                if (a[i]==a[j]) {
                     antall++;
-
                 }
-
-            }
-            // sjekker om elementet finnes bare en gang, hvis den gjør så øker telleren med 1.
-            if (antall == 1) {
-                teller++;
             }
 
-        }
-        return teller;
+            }
+
+        // tar listens lengde minus antall duplikater for å finne hvor mange tall finnes i arrayet.
+        return a.length-antall+1;
     }
 
 
@@ -193,8 +188,8 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        char array[] = {'a','b','c','d','e','f'};
-        rotasjon2(array,-1);
+        int [] array = {1,2,2,3,3,3,4,4,4,5,6,6};
+        System.out.println(antallUlikeUsortert(array));
     }
 }
 
