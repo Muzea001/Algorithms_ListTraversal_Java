@@ -229,19 +229,55 @@ public class Oblig1 {
 
     public static String flett(String s){
         String resultat="";
+
         String[] ordliste = s.split(" ");
-        for(int i =0; i<ordliste.length-1;i++){
-            char [] ord =ordliste[i].toCharArray();
-            for (int j = 0; j < ord.length;j++) {
-                resultat+=ord[j];
+        for (int i = 0; i < ordliste.length; i++) {
+            for (int j = 0; j < ordliste.length-1; j++) {
+                resultat+=ordliste[i].charAt(j);
+                break;
+
             }
-            }
+        }
         return resultat;
     }
 
 
+    // Oppgave 8;
+
+
+    public static void indeksSortering(int [] a) {
+        int n = a.length;
+        int[] indeks = new int[n];
+        int min = a[0];
+        int temp = a[0];
+        int index = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] < min) {
+                min = a[i];
+                i = indeks[0];
+                for (int j = 0; j < a.length; j++) {
+                    if (a[j] < temp && a[j] > min) {
+                        min = a[j];
+                        j = index;
+                    }
+
+                    for (int k = 1; k < indeks.length; j++) {
+                        indeks[k] = index;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i <indeks.length ; i++) {
+            System.out.println(indeks[i]+" ");
+        }
+    }
+
+
+
     public static void main(String[] args) {
-        System.out.println(flett("ord hei jeg heter"));
+        int array[]={0,1,2,3,4,5};
+        indeksSortering(array);
     }
 }
 
