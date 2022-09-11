@@ -76,26 +76,33 @@ public class Oblig1 {
     // Oppgave 3
 
     public static int antallUlikeUsortert(int[] a) {
-        int antall=0;
-        if (a.length==0) {
+        int antall = 0;
+        if (a.length == 0) {
             return 0;
         }
         // looper to ganger gjennom arrayet, tar indeks 0 og løper gjennom listen for å finne hvor mange duplikater den har osv.
-        for (int i = 0; i < a.length; i++ ) {
-            for (int j = i+1; j < a.length; j++) {
-                //bruker et hjelpevariabel for å lagre antall ganger et duplikat eksisterer.
-                if (a[i]==a[j]) {
-                    antall++;
+        int temp = -10;
+        for (int i = 0; i < a.length; i++) {
+            if (temp==a[i]){
+                i++;
+            }
+            for (int j = 0; j < a.length; j++) {
+                if(i==j && j<a.length-1){
+                    j++;
                 }
-            }
+                if (a[i] == a[j]) {
+                    antall++;
+                    temp = a[j];
+                    break;
+                }
+
+                // tar listens lengde minus antall duplikater for å finne hvor mange tall finnes i arrayet.
 
             }
 
-        // tar listens lengde minus antall duplikater for å finne hvor mange tall finnes i arrayet.
-        return a.length-antall+1;
+        }
+        return antall;
     }
-
-
     //Oppgave 4
 
 
@@ -187,9 +194,10 @@ public class Oblig1 {
         }
     }
 
-    //Oppgave 7
+    //Oppgave 7 a)
 
-    public static void flett(String a, String b){
+    public static String flett(String a, String b){
+        String resultat = "";
         int lengdeA = a.length();
         int lengdeB = b.length();
         if(lengdeA==lengdeB){
@@ -198,19 +206,42 @@ public class Oblig1 {
         char[] bliste = b.toCharArray();
 
         for (int i = 0; i < aliste.length; i++) {
-            System.out.println(aliste[i]);
-            System.out.println(bliste[i]);
+            resultat+=aliste[i];
+            resultat+=bliste[i];
         }
 
         }
+        else {
+            int minimumLengde = Math.min(a.length(),b.length());
+            for (int i = 0; i <minimumLengde ; i++) {
+                resultat+=a.charAt(i);
+                resultat+=b.charAt(i);
+            }
+            resultat+=a.substring(minimumLengde);
+            resultat+=b.substring(minimumLengde);
+        }
+        return resultat;
 
         }
 
 
+        //Oppgave 7b;
+
+    public static String flett(String s){
+        String resultat="";
+        String[] ordliste = s.split(" ");
+        for(int i =0; i<ordliste.length-1;i++){
+            char [] ord =ordliste[i].toCharArray();
+            for (int j = 0; j < ord.length;j++) {
+                resultat+=ord[j];
+            }
+            }
+        return resultat;
+    }
 
 
     public static void main(String[] args) {
-        flett("abc","abc");
+        System.out.println(flett("ord hei jeg heter"));
     }
 }
 
