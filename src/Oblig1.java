@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -76,32 +77,23 @@ public class Oblig1 {
     // Oppgave 3
 
     public static int antallUlikeUsortert(int[] a) {
-        int antall = 0;
-        if (a.length == 0) {
+
+        if (a.length==0){
             return 0;
         }
-        // looper to ganger gjennom arrayet, tar indeks 0 og løper gjennom listen for å finne hvor mange duplikater den har osv.
-        int temp = -10;
-        for (int i = 0; i < a.length; i++) {
-            if (temp == a[i]) {
-                i++;
-            }
-            for (int j = 0; j < a.length; j++) {
-                if (i == j && j < a.length - 1) {
+        ArrayList<Integer> nyliste = new ArrayList<Integer>();
+        nyliste.add(a[0]);
+        for (int i = 1; i < a.length; i++) {
+            for (int j = 0; j < nyliste.size(); j++) {
+                if(nyliste.contains(a[i])){
                     j++;
                 }
-                if (a[i] == a[j]) {
-                    antall++;
-                    temp = a[j];
-                    break;
+                else {
+                    nyliste.add(a[i]);
                 }
-
-                // tar listens lengde minus antall duplikater for å finne hvor mange tall finnes i arrayet.
-
             }
-
         }
-        return antall;
+        return nyliste.size();
     }
     //Oppgave 4
 
@@ -287,7 +279,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        System.out.println(flett("hei jeg heter"));
+        int array[]= {1,2,3,4,5,6,6,6,6};
+        System.out.println(antallUlikeUsortert(array));
     }
 }
 
