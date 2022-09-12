@@ -83,11 +83,11 @@ public class Oblig1 {
         // looper to ganger gjennom arrayet, tar indeks 0 og løper gjennom listen for å finne hvor mange duplikater den har osv.
         int temp = -10;
         for (int i = 0; i < a.length; i++) {
-            if (temp==a[i]){
+            if (temp == a[i]) {
                 i++;
             }
             for (int j = 0; j < a.length; j++) {
-                if(i==j && j<a.length-1){
+                if (i == j && j < a.length - 1) {
                     j++;
                 }
                 if (a[i] == a[j]) {
@@ -131,15 +131,15 @@ public class Oblig1 {
             }
         }
 
-        for (int j = a.length-1; j > n + 1; j--) {
-            for (int i = j-1; i >= n; i--) {
+        for (int j = a.length - 1; j > n + 1; j--) {
+            for (int i = j - 1; i >= n; i--) {
                 if (a[i] > a[j]) {
                     temp = a[i];
                     a[i] = a[j];
                     a[j] = temp;
                 }
             }
-            }
+        }
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i] + " ");
         }
@@ -148,24 +148,24 @@ public class Oblig1 {
     //Oppgave 5
 
 
-    public static void rotasjon (char[]a){
-        for (int i = 0; i <1 ; i++) {
+    public static void rotasjon(char[] a) {
+        for (int i = 0; i < 1; i++) {
             char siste;
-            siste = a[a.length-1];
-            for (int j = a.length-1; j >0; j--) {
-                a[j]=a[j-1];
+            siste = a[a.length - 1];
+            for (int j = a.length - 1; j > 0; j--) {
+                a[j] = a[j - 1];
             }
-            a[0]=siste;
+            a[0] = siste;
 
         }
-        for (int i = 0; i <a.length ; i++) {
+        for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
     }
 
     //Oppgave 6
 
-    public static void rotasjon2(char[]a,int k){
+    public static void rotasjon2(char[] a, int k) {
         if (k > 0) {
             for (int i = 0; i < k; i++) {
 
@@ -176,12 +176,11 @@ public class Oblig1 {
                 }
                 a[0] = siste;
             }
-        }
-            else {
+        } else {
             for (int i = 0; i > k; i--) {
                 char siste;
                 siste = a[0];
-                for (int j = 0; j <a.length-1; j++) {
+                for (int j = 0; j < a.length - 1; j++) {
                     a[j] = a[j + 1];
                 }
                 a[a.length - 1] = siste;
@@ -196,88 +195,99 @@ public class Oblig1 {
 
     //Oppgave 7 a)
 
-    public static String flett(String a, String b){
+    public static String flett(String a, String b) {
         String resultat = "";
         int lengdeA = a.length();
         int lengdeB = b.length();
-        if(lengdeA==lengdeB){
+        if (lengdeA == lengdeB) {
 
-        char[] aliste = a.toCharArray();
-        char[] bliste = b.toCharArray();
+            char[] aliste = a.toCharArray();
+            char[] bliste = b.toCharArray();
 
-        for (int i = 0; i < aliste.length; i++) {
-            resultat+=aliste[i];
-            resultat+=bliste[i];
-        }
-
-        }
-        else {
-            int minimumLengde = Math.min(a.length(),b.length());
-            for (int i = 0; i <minimumLengde ; i++) {
-                resultat+=a.charAt(i);
-                resultat+=b.charAt(i);
+            for (int i = 0; i < aliste.length; i++) {
+                resultat += aliste[i];
+                resultat += bliste[i];
             }
-            resultat+=a.substring(minimumLengde);
-            resultat+=b.substring(minimumLengde);
+
+        } else {
+            int minimumLengde = Math.min(a.length(), b.length());
+            for (int i = 0; i < minimumLengde; i++) {
+                resultat += a.charAt(i);
+                resultat += b.charAt(i);
+            }
+            resultat += a.substring(minimumLengde);
+            resultat += b.substring(minimumLengde);
         }
         return resultat;
 
-        }
+    }
 
 
-        //Oppgave 7b;
+    //Oppgave 7b;
 
-    public static String flett(String s){
-        String resultat="";
-
+    public static String flett(String s) {
+        int tall =0;
+        String resultat = "";
         String[] ordliste = s.split(" ");
         for (int i = 0; i < ordliste.length; i++) {
-            for (int j = 0; j < ordliste.length-1; j++) {
-                resultat+=ordliste[i].charAt(j);
-                break;
-
+            char[] ord = ordliste[i].toCharArray();
+            for (int j = 0; j <ord.length ; j++) {
+                if(j==tall){
+                    resultat+=ord[tall];
+                    tall++;
+                }
             }
         }
+
         return resultat;
     }
+
 
 
     // Oppgave 8;
 
 
-    public static void indeksSortering(int [] a) {
-        int n = a.length;
-        int[] indeks = new int[n];
-        int min = a[0];
-        int temp = a[0];
+    public static void indeksSortering(int[] a) {
+        int n = a.length-1;
+        int[] indeksListe = new int[n];
+        int min = a[n-1];
         int index = 0;
+        int nestMin;
 
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] < min) {
+
+        for (int i = n; i >0; i--) {
+            if(a[i]<min){
                 min = a[i];
-                i = indeks[0];
-                for (int j = 0; j < a.length; j++) {
-                    if (a[j] < temp && a[j] > min) {
-                        min = a[j];
-                        j = index;
-                    }
-
-                    for (int k = 1; k < indeks.length; j++) {
-                        indeks[k] = index;
+                index=i;
+                indeksListe[0]=index;
+            }
+            for (int j = n; j >0 ; j--) {
+                if(a[j]<a[j-1]&& a[j]>min){
+                    min=a[j];
+                    index=j;
+                    for (int k = 1; k <indeksListe.length ; k++) {
+                        indeksListe[k]=index;
                     }
                 }
             }
         }
-        for (int i = 0; i <indeks.length ; i++) {
-            System.out.println(indeks[i]+" ");
+
+
+
+
+        for (int i = 0; i <indeksListe.length ; i++) {
+            System.out.println(indeksListe[i]+" ");
         }
+
     }
 
 
 
+
+
+
     public static void main(String[] args) {
-        int array[]={0,1,2,3,4,5};
-        indeksSortering(array);
+        System.out.println(flett("hei jeg heter"));
     }
 }
 
