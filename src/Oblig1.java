@@ -261,6 +261,100 @@ public class Oblig1 {
         }
 
 
+        //Oppgave 9;
+
+
+
+    private static void bytt(int[] a, int i, int j)
+    { int temp = a[i]; a[i] = a[j]; a[j] = temp; }
+
+
+
+    public static int[] indeks(int[] a){
+        int[] indeks = new int[a.length];
+        for (int i = 0; i <a.length ; i++) {
+            indeks[i]=i;
+        }
+
+        for (int i = 0; i < a.length-2; i++) {
+            for (int j = 0; j < indeks.length-2; j++) {
+                if (a[indeks[j]] > a[indeks[j+1]]){ bytt(indeks, j, j+1);}
+                if (a[indeks[j+1]] > a[indeks[j+2]]) {bytt(indeks, j, j+2);};
+                if (a[indeks[j]] > a[indeks[j+1]]){ bytt(indeks,j,j+1);}
+
+            }
+
+
+        }
+        return indeks;
+
+    }
+
+
+
+
+
+    public static int[] tredjeMin(int[] a){
+        int n = a.length;
+        if (n < 3)     // må ha minst tre verdier
+        {
+            throw new NoSuchElementException("a.length(" + n + ") < 3!");
+        }
+
+        int[] indeks = indeks(a);
+
+        int m =  indeks[0];   // m er indeksen til minste verdi
+        int nm = indeks[1];   // nm er indeksen til nest minste verdi
+        int tm = indeks[2];   // tm er indeksen til tredje minste verdi
+
+        int minverdi = a[m];         // minste verdi
+        int nestminverdi = a[nm];    // nest minste verdi
+        int tredjeminverdi = a[tm];  // tredje minste verdi
+
+        for (int i = 3; i < n; i++)
+        {
+            int verdi = a[i];
+
+            if (verdi < tredjeminverdi)
+            {
+                if (verdi < nestminverdi)
+                {
+                    if (verdi < minverdi)
+                    {
+                        tm = nm;
+                        tredjeminverdi = nestminverdi;
+
+                        nm = m;
+                        nestminverdi = minverdi;
+
+                        m = i;
+                        minverdi = verdi;
+                    }
+                    else  // verdi < nestminverdi && verdi >= minverdi
+                    {
+                        tm = nm;
+                        tredjeminverdi = nestminverdi;
+
+                        nm = i;
+                        nestminverdi = verdi;
+                    }
+                }
+                else // verdi < tredjeminverdi && verdi >= nestminverdi
+                {
+                    tm = i;
+                    tredjeminverdi = verdi;
+                }
+            }
+
+        } // for
+
+        return new int[] { m, nm, tm };
+
+
+    }
+
+
+
 
 
 
@@ -269,6 +363,8 @@ public class Oblig1 {
 
     public static void main(String[] args) {
         int array[]= {7,3,5,2,11,8,1,6,2};
+        int array2[]={0,1,2,3,4,5,6,7,8,9};
+        System.out.println(Arrays.toString(indeks(array)));
         System.out.println(Arrays.toString(indeksSortering(array)));
     }
 }
