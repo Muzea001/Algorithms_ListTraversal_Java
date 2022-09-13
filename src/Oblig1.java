@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -135,6 +137,7 @@ public class Oblig1 {
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i] + " ");
         }
+
     }
 
     //Oppgave 5
@@ -217,21 +220,24 @@ public class Oblig1 {
 
     //Oppgave 7b;
 
-    public static String flett(String s) {
-        int tall =0;
-        String resultat = "";
-        String[] ordliste = s.split(" ");
-        for (int i = 0; i < ordliste.length; i++) {
-            char[] ord = ordliste[i].toCharArray();
-            for (int j = 0; j <ord.length ; j++) {
-                if(j==tall){
-                    resultat+=ord[tall];
-                    tall++;
+    public static String flett(String[] s) {
+        int m = s[0].length();
+        for (int i = 0; i < s.length; i++) {
+            int lengde = s[i].length();
+            if(lengde>m){
+                m=lengde;
+        }
+        }
+
+        StringBuilder nyString = new StringBuilder();
+        for (int i = 0; i <m ; i++) {
+            for (String ord : s){
+                if(i<ord.length()){
+                    nyString.append(ord.charAt(i));
                 }
             }
         }
-
-        return resultat;
+        return nyString.toString();
     }
 
 
@@ -239,39 +245,22 @@ public class Oblig1 {
     // Oppgave 8;
 
 
-    public static void indeksSortering(int[] a) {
-        int n = a.length-1;
-        int[] indeksListe = new int[n];
-        int min = a[n-1];
-        int index = 0;
-        int nestMin;
+    public static Integer[] indeksSortering(int[] a) {
+       Integer[] indesker = new Integer[a.length];
+        for (int i = 0; i <a.length ; i++) {
+            indesker[i]=i;
+        }
 
-
-        for (int i = n; i >0; i--) {
-            if(a[i]<min){
-                min = a[i];
-                index=i;
-                indeksListe[0]=index;
+        Arrays.sort(indesker, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return a[o1]-a[o2];
             }
-            for (int j = n; j >0 ; j--) {
-                if(a[j]<a[j-1]&& a[j]>min){
-                    min=a[j];
-                    index=j;
-                    for (int k = 1; k <indeksListe.length ; k++) {
-                        indeksListe[k]=index;
-                    }
-                }
-            }
+        });
+        return indesker;
         }
 
 
-
-
-        for (int i = 0; i <indeksListe.length ; i++) {
-            System.out.println(indeksListe[i]+" ");
-        }
-
-    }
 
 
 
@@ -279,8 +268,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int array[]= {1,2,3,4,5,6,6,6,6};
-        System.out.println(antallUlikeUsortert(array));
+        int array[]= {7,3,5,2,11,8,1,6,2};
+        System.out.println(Arrays.toString(indeksSortering(array)));
     }
 }
 
