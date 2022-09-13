@@ -245,26 +245,6 @@ public class Oblig1 {
     // Oppgave 8;
 
 
-    public static Integer[] indeksSortering(int[] a) {
-       Integer[] indesker = new Integer[a.length];
-        for (int i = 0; i <a.length ; i++) {
-            indesker[i]=i;
-        }
-
-        Arrays.sort(indesker, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return a[o1]-a[o2];
-            }
-        });
-        return indesker;
-        }
-
-
-        //Oppgave 9;
-
-
-
     private static void bytt(int[] a, int i, int j)
     { int temp = a[i]; a[i] = a[j]; a[j] = temp; }
 
@@ -290,82 +270,65 @@ public class Oblig1 {
 
     }
 
+        //Oppgave 9;
 
-
-
-
-    public static int[] tredjeMin(int[] a){
+    public static int[] treMinste(int[]a){
         int n = a.length;
-        if (n < 3)     // må ha minst tre verdier
-        {
-            throw new NoSuchElementException("a.length(" + n + ") < 3!");
+        if (n<3){
+            throw new NoSuchElementException("a.length(" + n +")< 3");
         }
 
-        int[] indeks = indeks(a);
+        int indeks[] = indeks(a);
 
-        int m =  indeks[0];   // m er indeksen til minste verdi
-        int nm = indeks[1];   // nm er indeksen til nest minste verdi
-        int tm = indeks[2];   // tm er indeksen til tredje minste verdi
+        int m = indeks[0];
+        int nm = indeks[1];
+        int tnm = indeks[2];
 
-        int minverdi = a[m];         // minste verdi
-        int nestminverdi = a[nm];    // nest minste verdi
-        int tredjeminverdi = a[tm];  // tredje minste verdi
+        int mv = indeks[m];
+        int nmv = indeks[nm];
+        int tnmv = indeks[tnm];
 
-        for (int i = 3; i < n; i++)
-        {
+
+        for (int i = 3; i <indeks.length ; i++) {
             int verdi = a[i];
 
-            if (verdi < tredjeminverdi)
-            {
-                if (verdi < nestminverdi)
-                {
-                    if (verdi < minverdi)
-                    {
-                        tm = nm;
-                        tredjeminverdi = nestminverdi;
+            if(verdi<tnmv&&verdi<nmv&&verdi<mv){
+                        tnm = nm;
+                        tnmv=nmv;
 
                         nm = m;
-                        nestminverdi = minverdi;
+                        nmv = mv;
 
-                        m = i;
-                        minverdi = verdi;
+                        m= i;
+                        mv = verdi;
                     }
-                    else  // verdi < nestminverdi && verdi >= minverdi
-                    {
-                        tm = nm;
-                        tredjeminverdi = nestminverdi;
+                    else if(verdi<nmv&&verdi>=mv){
+                        tnm = nm;
+                        tnmv = nmv;
 
                         nm = i;
-                        nestminverdi = verdi;
+                        nmv=verdi;
                     }
-                }
-                else // verdi < tredjeminverdi && verdi >= nestminverdi
-                {
-                    tm = i;
-                    tredjeminverdi = verdi;
-                }
-            }
 
-        } // for
+                    else if(verdi<tnmv&&verdi>=nmv){
+                        tnm=i;
+                        tnmv=verdi;
+                    }
 
-        return new int[] { m, nm, tm };
+
+        }
+        return new int[]{m,nm,tnm};
+
 
 
     }
 
 
 
-
-
-
-
-
-
     public static void main(String[] args) {
         int array[]= {7,3,5,2,11,8,1,6,2};
         int array2[]={0,1,2,3,4,5,6,7,8,9};
-        System.out.println(Arrays.toString(indeks(array)));
-        System.out.println(Arrays.toString(indeksSortering(array)));
+        System.out.println(Arrays.toString(treMinste(array)));
     }
 }
 
